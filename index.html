@@ -69,9 +69,10 @@ function touch(tE){
 		}, false);
 		
 		canvas.addEventListener('touchmove', function(event){
-			out.innerHTML = "TOUCH MOVING!";
+			out.innerHTML = "TOUCH MOVING! <BR> Touch Count:"+event.touches.length;
 			ctx.clearRect(0,0,canvas.width, canvas.height);
 			for(var f=0; f<event.touches.length; f++){
+				
 				var touch = event.touches[f];
 				ctx.beginPath();
 				ctx.arc(touch.clientX, touch.clientY, 20, 0, Math.Pi*2);
