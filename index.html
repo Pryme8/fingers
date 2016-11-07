@@ -61,6 +61,10 @@ function touch(tE){
   				out.innerHTML = JSON.stringify(event.touches)+ "<BR>" +
 								JSON.stringify(event.targetTouches);
 		}, false);
+		canvas.addEventListener('touchend', function(event){
+			  out.innerHTML = JSON.stringify(event.changedTouches);
+			
+		}, false);
 		
 		/*canvas.addEventListener('click', function(event) {
   				out.innerHTML = event.type;
