@@ -57,6 +57,8 @@ function touch(tE){
 	 out.style.background = 'lightgrey';
 	 
 	 
+	 var ctx = canvas.getContext('2d');
+	 
     	canvas.addEventListener('touchstart', function(event) {
   				out.innerHTML = JSON.stringify(event.touches)+ "<BR>" +
 								JSON.stringify(event.targetTouches);
@@ -66,7 +68,17 @@ function touch(tE){
 			
 		}, false);
 		
-		
+		canvas.addEventListener('touchmove', function(event){
+			ctx.clearRect(0,0,canvas.width, canvas.height);
+			for(var f=0; f<event.touches.length; f++){
+				var touch = event.touches[f];
+				ctx.beginPath();
+				ctx.arc(touch.clientX, touch.clientY, 20, 0, Math.Pi*2);
+				ctx.fill();
+				ctx.closePath();
+			};
+			
+		}, false);
 		
 		/*canvas.addEventListener('click', function(event) {
   				out.innerHTML = event.type;
